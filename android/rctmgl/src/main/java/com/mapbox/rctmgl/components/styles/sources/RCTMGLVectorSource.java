@@ -19,12 +19,17 @@ import java.util.List;
  * Created by nickitaliano on 9/8/17.
  */
 
-public class RCTMGLVectorSource extends RCTMGLTileSource<VectorSource> {
+public class RCTMGLVectorSource extends RCTSource<VectorSource> {
+    private String mURL;
     private RCTMGLVectorSourceManager mManager;
 
     public RCTMGLVectorSource(Context context, RCTMGLVectorSourceManager manager) {
         super(context);
         mManager = manager;
+    }
+
+    public void setURL(String url) {
+        mURL = url;
     }
 
     public void onPress(Feature feature) {
@@ -36,12 +41,7 @@ public class RCTMGLVectorSource extends RCTMGLTileSource<VectorSource> {
         if (isDefaultSource(mID)) {
             return (VectorSource)mMap.getStyle().getSource(DEFAULT_ID);
         }
-
-        String configurationUrl = getURL();
-        if (configurationUrl != null) {
-            return new VectorSource(mID, getURL());
-        }
-        return new VectorSource(mID, buildTileset());
+        return new VectorSource(mID, mURL);
     }
 
     public void querySourceFeatures(String callbackID,

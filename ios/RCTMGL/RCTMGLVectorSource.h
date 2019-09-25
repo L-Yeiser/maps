@@ -6,10 +6,12 @@
 //  Copyright © 2017 Mapbox Inc. All rights reserved.
 //
 
-#import "RCTMGLTileSource.h"
+#import "RCTMGLSource.h"
 @import Mapbox;
 
-@interface RCTMGLVectorSource : RCTMGLTileSource
+@interface RCTMGLVectorSource : RCTMGLSource
+
+@property (nonatomic, copy) NSString *url;
 
 - (NSArray<id <MGLFeature>> *)featuresInSourceLayersWithIdentifiers:(NSSet<NSString *> *)sourceLayerIdentifiers predicate:(nullable NSPredicate *)predicate;
 

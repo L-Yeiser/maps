@@ -6,11 +6,18 @@
 //  Copyright © 2017 Mapbox Inc. All rights reserved.
 //
 
-#import "RCTMGLTileSource.h"
+#import "RCTMGLSource.h"
 @import Mapbox;
 
-@interface RCTMGLRasterSource : RCTMGLTileSource
+@interface RCTMGLRasterSource : RCTMGLSource
+
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *attribution;
 
 @property (nonatomic, strong) NSNumber *tileSize;
+@property (nonatomic, strong) NSNumber *minZoomLevel;
+@property (nonatomic, strong) NSNumber *maxZoomLevel;
+
+@property (nonatomic, assign) BOOL tms;
 
 @end
